@@ -1,19 +1,41 @@
 require("dotenv").config();
 
-console.log("MONGO_URI =", process.env.MONGO_URI);
-const express  = require("express");
-const cors     = require("cors");
+const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/zentrax";
+const maskedMongoUri = mongoUri.replace(/\/\/([^:/]+):([^@]+)@/, "//***:***@");
+console.log("MONGO_URI =", maskedMongoUri);
+
+const express = require("express");
+const cors = require("cors");
 const connectDB = require("./config/db");
 
 const app = express();
+app.locals.dbConnected = false;
 // Restrict trust to a single proxy (dev proxy like CRA) to avoid permissive setting
 app.set("trust proxy", 1);
 
 // ── Connect MongoDB ───────────────────────────────────────────────────────────
-connectDB();
+const startServer = async () => {
+  const conn = await connectDB();
+  app.locals.dbConnected = Boolean(conn);
+
+  if (conn) {
+    try {
+      const seedAdmin = require("./seeds/seedAdmin");
+      await seedAdmin();
+    } catch (e) {
+      console.error("Failed to run seedAdmin:", e.message || e);
+    }
+  } else {
+    console.warn("⚠️ Database unavailable; skipping seedAdmin and database seeding until MongoDB is reachable.");
+  }
+
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`🚀 ZENTRAX server → http://localhost:${PORT}`);
+  });
+};
 
 // ── Middleware ────────────────────────────────────────────────────────────────
-const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
   process.env.CLIENT_URL || "http://localhost:3000",
   "http://127.0.0.1:3000",
@@ -73,7 +95,10 @@ app.use("/api",         require("./routes/contactRoutes"));
 
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get("/api/health", (req, res) => {
-  res.json({ status: "ZENTRAX RBAC Backend Running ✅", db: "MongoDB" });
+  res.json({
+    status: "ZENTRAX RBAC Backend Running ✅",
+    db: app.locals.dbConnected ? "MongoDB connected" : "MongoDB unavailable",
+  });
 });
 
 // ── Global error handler ──────────────────────────────────────────────────────
@@ -93,23 +118,10 @@ app.use((err, req, res, next) => {
 
 // ── Start ─────────────────────────────────────────────────────────────────────
 if (require.main === module) {
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 ZENTRAX server → http://localhost:${PORT}`);
-  // Seed official admin account on startup
-  try {
-    const seedAdmin = require("./seeds/seedAdmin");
-    seedAdmin();
-  } catch (e) {
-    console.error("Failed to run seedAdmin:", e.message || e);
-  }
-});
+  startServer().catch((err) => {
+    console.error("Failed to start server:", err);
+    process.exit(1);
+  });
 } else {
-  try {
-    const seedAdmin = require("./seeds/seedAdmin");
-    seedAdmin();
-  } catch (e) {
-    console.error("Failed to run seedAdmin:", e.message || e);
-  }
   module.exports = app;
 }
