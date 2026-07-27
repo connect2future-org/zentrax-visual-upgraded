@@ -1,4 +1,5 @@
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, ".env") });
 
 const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/zentrax";
 const maskedMongoUri = mongoUri.replace(/\/\/([^:/]+):([^@]+)@/, "//***:***@");
@@ -12,6 +13,16 @@ const app = express();
 app.locals.dbConnected = false;
 // Restrict trust to a single proxy (dev proxy like CRA) to avoid permissive setting
 app.set("trust proxy", 1);
+
+function normalizeOrigin(value) {
+  if (!value) return "";
+  const trimmed = String(value).trim().replace(/\/+$/, "");
+  try {
+    return new URL(trimmed).origin;
+  } catch (err) {
+    return trimmed;
+  }
+}
 
 // ── Connect MongoDB ───────────────────────────────────────────────────────────
 const startServer = async () => {
@@ -36,29 +47,43 @@ const startServer = async () => {
 };
 
 // ── Middleware ────────────────────────────────────────────────────────────────
-const allowedOrigins = [
-  process.env.CLIENT_URL || "http://localhost:3000",
-  "http://127.0.0.1:3000",
-  "http://localhost:5000",
-  "http://127.0.0.1:5000",
-  "http://localhost:3001",
-  "http://127.0.0.1:3001",
-];
+const PORT = process.env.PORT || 5000;
+const rawClientUrl = process.env.CLIENT_URL || "http://localhost:3000";
+const envOrigins = rawClientUrl
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
-app.use(cors({
+const normalizedAllowedOrigins = new Set(
+  [
+    ...envOrigins,
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:5000",
+    "http://127.0.0.1:5000",
+    "http://localhost:3001",
+    "http://127.0.0.1:3001",
+  ]
+    .map(normalizeOrigin)
+    .filter(Boolean)
+);
+
+console.log("[CORS] CLIENT_URL raw =", rawClientUrl);
+console.log("[CORS] Allowed origins =", Array.from(normalizedAllowedOrigins));
+
+const corsOptions = {
   origin: (origin, callback) => {
     // Allow requests with no origin (like mobile apps or curl)
     if (!origin) return callback(null, true);
 
-    // Normalize origin by stripping trailing slashes and using URL.origin
-    const norm = origin.replace(/\/+$/, "");
+    const normalizedRequestOrigin = normalizeOrigin(origin);
+
     try {
-      const normalizedOrigin = new URL(norm).origin;
-      const hostname = new URL(normalizedOrigin).hostname;
+      const hostname = new URL(normalizedRequestOrigin).hostname;
       if (
-        allowedOrigins.includes(normalizedOrigin) ||
-        allowedOrigins.includes(norm) ||
-        hostname.endsWith(".vercel.app")
+        normalizedAllowedOrigins.has(normalizedRequestOrigin) ||
+        hostname.endsWith(".vercel.app") ||
+        normalizedRequestOrigin === `http://localhost:${PORT}`
       ) {
         return callback(null, true);
       }
@@ -69,9 +94,13 @@ app.use(cors({
     callback(new Error(`CORS policy: origin '${origin}' not allowed`));
   },
   credentials: true,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization", "x-auth-token"],
   optionsSuccessStatus: 200,
-}));
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
