@@ -1,12 +1,9 @@
 const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, ".env") });
 
-const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/zentrax";
-const maskedMongoUri = mongoUri.replace(/\/\/([^:/]+):([^@]+)@/, "//***:***@");
-console.log("MONGO_URI =", maskedMongoUri);
-
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
 const connectDB = require("./config/db");
 
 const app = express();
@@ -116,7 +113,9 @@ app.use((req, res, next) => {
 // ── API Routes ────────────────────────────────────────────────────────────────
 app.use("/api/auth",    require("./routes/authRoutes"));
 app.use("/api/admin/auth", require("./routes/adminAuthRoutes"));
+app.use("/api/admin/property-booking", require("./routes/propertyBookingAdminRoutes"));
 app.use("/api/admin",   require("./routes/adminRoutes"));
+app.use("/api/property-booking", require("./routes/propertyBookingPublicRoutes"));
 app.use("/api/properties", require("./routes/propertiesRoutes"));
 app.use("/api/manager", require("./routes/managerRoutes"));
 app.use("/api/client",  require("./routes/clientRoutes"));
@@ -124,9 +123,10 @@ app.use("/api",         require("./routes/contactRoutes"));
 
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get("/api/health", (req, res) => {
+  const databaseConnected = mongoose.connection.readyState === 1;
   res.json({
     status: "ZENTRAX RBAC Backend Running ✅",
-    db: app.locals.dbConnected ? "MongoDB connected" : "MongoDB unavailable",
+    db: databaseConnected ? "MongoDB connected" : "MongoDB unavailable",
   });
 });
 

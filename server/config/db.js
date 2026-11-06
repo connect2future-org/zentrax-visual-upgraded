@@ -1,51 +1,70 @@
 const mongoose = require("mongoose");
 const dns = require("dns");
 
+const trustedDnsResolvers = ["1.1.1.1", "8.8.8.8"];
+
 const getMongoUri = () => {
-  return process.env.MONGO_URI || process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/zentrax";
+  return process.env.MONGO_URI || process.env.MONGODB_URI || "";
 };
 
-const ensureAtlasDnsResolver = async () => {
-  const mongoUri = getMongoUri();
+const ensureAtlasDnsResolver = async (mongoUri) => {
   if (!mongoUri.startsWith("mongodb+srv://")) return;
 
-  const clusterHost = mongoUri.split("@")[1]?.split("/")[0];
+  const clusterHost = new URL(mongoUri).hostname;
   if (!clusterHost) return;
 
   const srvName = `_mongodb._tcp.${clusterHost}`;
   try {
     await dns.promises.resolveSrv(srvName);
+    return;
   } catch (err) {
-    const servers = dns.getServers();
-    if (servers.length === 0 || (servers.length === 1 && servers[0] === "127.0.0.1")) {
-      dns.setServers(["8.8.8.8", "1.1.1.1"]);
-      console.log("⚙️ Node DNS resolver fallback enabled for Atlas SRV lookup:", dns.getServers());
-    } else {
-      dns.setServers(["8.8.8.8", "1.1.1.1"]);
-      console.log("⚙️ Atlas SRV lookup failed, using fallback DNS for Atlas:", err.code || err.message);
+    console.warn(`MongoDB SRV lookup through the default Node.js resolver failed (${err.code || "DNS error"}); checking alternate resolvers.`);
+  }
+
+  let lastError;
+  for (const server of trustedDnsResolvers) {
+    const resolver = new dns.promises.Resolver();
+    resolver.setServers([server]);
+    try {
+      const srvRecords = await resolver.resolveSrv(srvName);
+      await resolver.resolveTxt(clusterHost);
+      if (!srvRecords.length) throw new Error("MongoDB SRV lookup returned no records");
+
+      // The MongoDB driver uses Node's process-wide resolver for SRV URIs.
+      // Set it only after this resolver has returned valid SRV and TXT answers.
+      dns.setServers([server]);
+      console.warn("Using a verified alternate DNS resolver for MongoDB SRV lookups in this Node.js process.");
+      return;
+    } catch (err) {
+      lastError = err;
     }
   }
+
+  throw new Error(`MongoDB SRV DNS failed with the default and alternate resolvers (${lastError?.code || "DNS error"}).`);
 };
 
 const connectDB = async (retryCount = 0) => {
   const mongoUri = getMongoUri();
-  await ensureAtlasDnsResolver();
-
+  if (!mongoUri) {
+    console.error("MongoDB connection unavailable: set MONGO_URI or MONGODB_URI in server/.env.");
+    return null;
+  }
   try {
+    await ensureAtlasDnsResolver(mongoUri);
     const conn = await mongoose.connect(mongoUri, {
       serverSelectionTimeoutMS: 10000,
       autoIndex: true,
+      autoCreate: false,
       family: 4,
     });
 
-    console.log(`✅ MongoDB Connected → ${conn.connection.host}`);
+    console.log("MongoDB connection established.");
 
     // Seed default users & demo data on first connect
     await seedDatabase();
     return conn;
   } catch (err) {
-    const message = err?.message || String(err);
-    console.error("❌ MongoDB connection error:", message);
+    console.error("MongoDB connection failed:", err?.name || "ConnectionError", err?.code || err?.cause?.code || "no error code");
 
     if (retryCount < 2) {
       console.log(`⏳ Retrying MongoDB connection in 5s (${retryCount + 1}/2)...`);
@@ -53,7 +72,7 @@ const connectDB = async (retryCount = 0) => {
       return null;
     }
 
-    console.error("⚠️ Continuing without MongoDB. Database-backed routes will fail until MongoDB is reachable.");
+    console.error("MongoDB remains unavailable. Check SRV DNS, network access, and the configured MongoDB service.");
     return null;
   }
 };
@@ -115,3 +134,4 @@ async function seedDatabase() {
 }
 
 module.exports = connectDB;
+module.exports.ensureAtlasDnsResolver = ensureAtlasDnsResolver;
