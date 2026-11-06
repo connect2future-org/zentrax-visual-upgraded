@@ -71,10 +71,10 @@ function FooterSection() {
             <h4>Contact</h4>
             <ul>
               <li>
-                <a href="tel:7019436720">+91 70194 36720</a>
+                <a href="https://web.whatsapp.com/send?phone=917019436720" target="_blank" rel="noopener noreferrer">+91 70194 36720</a>
               </li>
               <li>
-                <a href="mailto:zentrax1234@gmail.com">zentrax1234@gmail.com</a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=zentrax1234%40gmail.com" target="_blank" rel="noopener noreferrer">zentrax1234@gmail.com</a>
               </li>
               <li>Mon–Sat: 9:00 AM – 7:00 PM</li>
             </ul>

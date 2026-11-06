@@ -17,18 +17,18 @@ function ContactSection() {
             </div>
             <div className="cinfo-item">
               <div className="cinfo-label">Alternative</div>
-              <a href="tel:7019436720" className="cinfo-val cinfo-link">
+              <a href="https://web.whatsapp.com/send?phone=917019436720" className="cinfo-val cinfo-link" target="_blank" rel="noopener noreferrer">
                 +91 70194 36720
               </a>
             </div>
             <div className="cinfo-item">
               <div className="cinfo-label">Email</div>
-              <a href="mailto:zentrax1234@gmail.com" className="cinfo-val cinfo-link">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=zentrax1234%40gmail.com" className="cinfo-val cinfo-link" target="_blank" rel="noopener noreferrer">
                 zentrax1234@gmail.com
               </a>
             </div>
             <a
-              href="https://wa.me/917019436720"
+              href="https://web.whatsapp.com/send?phone=917019436720"
               className="whatsapp-contact"
               target="_blank"
               rel="noopener noreferrer"
@@ -119,8 +119,8 @@ function ContactSection() {
               </svg>
               Open in Google Maps
             </a>
-            <a href="tel:7019436720" className="btn-outline">
-              Call for Directions
+            <a href="https://web.whatsapp.com/send?phone=917019436720&text=Hello%2C%20please%20share%20directions%20to%20Zentrax%20Constructions." className="btn-outline" target="_blank" rel="noopener noreferrer">
+              Ask for Directions on WhatsApp
             </a>
           </div>
         </div>

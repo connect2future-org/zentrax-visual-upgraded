@@ -12,7 +12,9 @@ import ManagerDashboard from "./pages/ManagerDashboard";
 import Layout from "./components/layout/Layout";
 import ClientDashboard  from "./pages/ClientDashboard";
 import PropertiesPage from "./pages/PropertiesPage";
+import PropertyBookingPage from "./pages/PropertyBookingPage";
 import NotFound         from "./pages/NotFound";
+import SunShreeQrPopupGate from "./components/propertyBooking/SunShreeQrPopupGate";
 
 // ── Protected Route ───────────────────────────────────────────────────────────
 // Redirects to /login if unauthenticated; redirects wrong-role users to their
@@ -51,10 +53,11 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           {/* Public */}
-          <Route path="/"      element={<Zentrax />} />
+          <Route path="/" element={<><Zentrax /><SunShreeQrPopupGate /></>} />
           <Route path="/landing" element={<Zentrax />} />
           <Route path="/login"  element={<LoginPage />} />
           <Route path="/properties" element={<PropertiesPage />} />
+          <Route path="/property-booking/sunshree" element={<PropertyBookingPage />} />
           <Route path="/signup" element={<Navigate to="/login" replace />} />
 
           {/* Dashboard shortcut — redirects by role */}

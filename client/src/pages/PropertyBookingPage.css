@@ -1,0 +1,1007 @@
+.sunshree-public-page {
+  background: #f7f6f2;
+  color: #202326;
+  min-height: 100vh;
+  padding: 0 clamp(1rem, 4vw, 3.5rem) 2rem;
+}
+
+.sunshree-public-header {
+  align-items: center;
+  background: #f7f6f2;
+  border-bottom: 1px solid #e5e1d7;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1180px;
+  min-height: 76px;
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+}
+
+.sunshree-public-header a {
+  color: #363a3d;
+  text-decoration: none;
+}
+
+.sunshree-page-close {
+  align-items: center;
+  background: #202a30;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(20, 25, 30, 0.24);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 44px;
+  font: inherit;
+  font-size: 1.65rem;
+  height: 44px;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  width: 44px;
+}
+
+.sunshree-page-close:focus-visible {
+  outline: 3px solid #c9a84c;
+  outline-offset: 3px;
+}
+
+.sunshree-brand {
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.sunshree-brand span {
+  color: #8d7127;
+  font-size: 0.7rem;
+}
+
+.sunshree-property-card {
+  background: #fff;
+  border: 1px solid #e5e1d7;
+  border-radius: 16px;
+  box-shadow: 0 18px 50px rgba(20, 25, 30, 0.08);
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  margin: clamp(1.5rem, 5vw, 3.5rem) auto;
+  max-width: 1180px;
+  overflow: hidden;
+}
+
+.sunshree-category-section {
+  background: #fff;
+  border: 1px solid #e5e1d7;
+  border-radius: 16px;
+  box-shadow: 0 18px 50px rgba(20, 25, 30, 0.08);
+  display: grid;
+  gap: 1.25rem;
+  margin: clamp(1.5rem, 5vw, 3.5rem) auto;
+  max-width: 1180px;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  scroll-margin-top: 1.5rem;
+}
+
+.sunshree-category-copy {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.sunshree-category-copy h1,
+.sunshree-category-copy h2 {
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 1.08;
+  margin: 0;
+}
+
+.sunshree-residential-gallery {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+
+.sunshree-residential-gallery img {
+  aspect-ratio: 4 / 3;
+  background: #e8e5de;
+  border-radius: 10px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.sunshree-residential-gallery .sunshree-image-placeholder {
+  border-radius: 10px;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+}
+
+.sunshree-residential-enquiry,
+.sunshree-residential-whatsapp,
+.sunshree-short-stay-whatsapp,
+.sunshree-short-stay-button,
+.sunshree-popup-whatsapp {
+  align-items: center;
+  border-radius: 7px;
+  display: inline-flex;
+  font-weight: 800;
+  justify-content: center;
+  min-height: 45px;
+  padding: 0.7rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.sunshree-residential-enquiry {
+  background: #c9a84c;
+  color: #17191c;
+}
+
+.sunshree-residential-whatsapp,
+.sunshree-short-stay-whatsapp,
+.sunshree-popup-whatsapp {
+  background: #176b4a;
+  color: #fff;
+}
+
+.sunshree-short-stay-section {
+  background: #fbfaf7;
+}
+
+.sunshree-short-stay-button {
+  background: #212a32;
+  border: 1px solid #212a32;
+  color: #fff;
+}
+
+.sunshree-popup-whatsapp {
+  font-size: 0.9rem;
+  justify-self: center;
+}
+
+.sunshree-property-image,
+.sunshree-image-placeholder {
+  background: #e8e5de;
+  min-height: 420px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.sunshree-image-placeholder {
+  align-items: center;
+  color: #656a70;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.sunshree-property-copy {
+  align-content: center;
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.3rem, 4vw, 3rem);
+}
+
+.sunshree-property-eyebrow {
+  color: #8b6d21;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.sunshree-property-copy h1 {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  margin: 0;
+}
+
+.sunshree-property-address,
+.sunshree-property-description,
+.sunshree-booking-note {
+  color: #656a70;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.sunshree-booking-note {
+  border-left: 3px solid #c9a84c;
+  font-size: 0.88rem;
+  padding-left: 0.8rem;
+}
+
+.sunshree-booking-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.sunshree-booking-links a,
+.sunshree-whatsapp-card a,
+.sunshree-book-button {
+  align-items: center;
+  background: #c9a84c;
+  border: 1px solid #c9a84c;
+  border-radius: 7px;
+  color: #17191c;
+  display: inline-flex;
+  font-size: 0.86rem;
+  font-weight: 800;
+  justify-content: center;
+  min-height: 45px;
+  padding: 0.7rem 1rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.sunshree-booking-links a:hover,
+.sunshree-whatsapp-card a:hover,
+.sunshree-book-button:hover {
+  background: #e2c47a;
+}
+
+.sunshree-whatsapp-card {
+  background: #f7f6f2;
+  border: 1px solid #e8e4da;
+  border-radius: 11px;
+  display: grid;
+  gap: 0.65rem;
+  padding: 1rem;
+}
+
+.sunshree-whatsapp-card h2 {
+  font-size: 1.18rem;
+  margin: 0;
+}
+
+.sunshree-whatsapp-card p {
+  color: #656a70;
+  margin: 0;
+}
+
+.sunshree-whatsapp-card a {
+  background: #176b4a;
+  border-color: #176b4a;
+  color: #fff;
+}
+
+.sunshree-whatsapp-card a:hover {
+  background: #0f563b;
+}
+
+.sunshree-unavailable {
+  color: #656a70;
+  margin: 5rem auto;
+  max-width: 700px;
+  text-align: center;
+}
+
+.sunshree-popup-backdrop {
+  align-items: center;
+  background: rgba(8, 10, 12, 0.68);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  overflow: auto;
+  padding: 1rem;
+  position: fixed;
+  z-index: 10001;
+}
+
+.sunshree-popup-card {
+  background: #fff;
+  border: 1px solid rgba(201, 168, 76, 0.45);
+  border-top: 5px solid #c9a84c;
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  max-height: calc(100vh - 2rem);
+  max-width: 560px;
+  overflow: auto;
+  position: relative;
+  width: 100%;
+}
+
+.sunshree-popup-card > img {
+  display: block;
+  height: clamp(190px, 33vh, 280px);
+  object-fit: cover;
+  width: 100%;
+}
+
+.sunshree-popup-close {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.5rem;
+  height: 40px;
+  justify-content: center;
+  position: absolute;
+  right: 0.8rem;
+  top: 0.8rem;
+  width: 40px;
+}
+
+.sunshree-popup-content {
+  display: grid;
+  gap: 0.75rem;
+  padding: clamp(1.1rem, 4vw, 1.8rem);
+}
+
+.sunshree-popup-eyebrow {
+  color: #8b6d21;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin: 0;
+}
+
+.sunshree-popup-content h2 {
+  color: #17191c;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  margin: 0;
+}
+
+.sunshree-popup-content h3 {
+  color: #8b6d21;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.sunshree-popup-content > p:not(.sunshree-popup-eyebrow) {
+  color: #656a70;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.sunshree-popup-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.3rem;
+}
+
+.sunshree-residential-enquiry,
+.sunshree-residential-whatsapp,
+.sunshree-short-stay-whatsapp,
+.sunshree-short-stay-button,
+.sunshree-popup-whatsapp {
+  width: 100%;
+}
+
+.sunshree-later-button {
+  background: transparent;
+  border: 0;
+  color: #555b62;
+  cursor: pointer;
+  font: inherit;
+  min-height: 44px;
+  padding: 0.6rem 0.9rem;
+}
+
+@media (max-width: 720px) {
+  .sunshree-property-card {
+    grid-template-columns: 1fr;
+    margin-top: 1.2rem;
+  }
+
+  .sunshree-property-image,
+  .sunshree-image-placeholder {
+    min-height: 240px;
+    max-height: 340px;
+  }
+
+  .sunshree-public-header {
+    gap: 0.7rem;
+  }
+
+  .sunshree-popup-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .sunshree-book-button,
+  .sunshree-later-button {
+    width: 100%;
+  }
+}
+
+.sunshree-popup-card {
+  max-width: 940px;
+}
+
+.sunshree-popup-image {
+  display: block;
+  height: clamp(180px, 30vh, 260px);
+  object-fit: cover;
+  width: 100%;
+}
+
+.sunshree-popup-image-placeholder {
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 75% 15%, rgba(201, 168, 76, 0.22), transparent 42%),
+    linear-gradient(135deg, #1d2727, #101414 62%, #39301e);
+  color: #e4d4a9;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  height: clamp(180px, 28vh, 230px);
+  justify-content: center;
+  letter-spacing: 0.2em;
+  width: 100%;
+}
+
+.sunshree-popup-placeholder-mark {
+  align-items: center;
+  border: 1px solid rgba(226, 196, 122, 0.7);
+  border-radius: 50%;
+  display: flex;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 2rem;
+  height: 58px;
+  justify-content: center;
+  letter-spacing: 0;
+  width: 58px;
+}
+
+.sunshree-popup-image-placeholder small {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+}
+
+.sunshree-popup-content {
+  gap: 0.85rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.sunshree-popup-eyebrow {
+  letter-spacing: 0.18em;
+}
+
+.sunshree-popup-content h2 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  line-height: 1.05;
+}
+
+.sunshree-popup-subtitle {
+  color: #8b6d21;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  margin: -0.3rem 0 0;
+  text-transform: uppercase;
+}
+
+.sunshree-popup-actions {
+  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.sunshree-popup-option {
+  align-content: start;
+  background: #f8f6f0;
+  border: 1px solid #e8e1cf;
+  border-radius: 12px;
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+.sunshree-popup-option-short-stay {
+  background: #f4f5f4;
+  border-color: #dfe4df;
+}
+
+.sunshree-popup-option-kicker {
+  color: #8b6d21;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.sunshree-popup-option h3 {
+  color: #202326;
+  font-size: 1.18rem;
+  letter-spacing: 0;
+  margin: 0;
+  text-transform: none;
+}
+
+.sunshree-popup-option p {
+  color: #656a70;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.sunshree-popup-option .sunshree-book-button,
+.sunshree-popup-option .sunshree-short-stay-button {
+  align-items: center;
+  border-radius: 7px;
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 800;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.7rem 0.85rem;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.sunshree-popup-option .sunshree-book-button {
+  background: #c9a84c;
+  border: 1px solid #c9a84c;
+  color: #17191c;
+}
+
+.sunshree-popup-option .sunshree-short-stay-button {
+  background: #202a30;
+  border: 1px solid #202a30;
+  color: #fff;
+}
+
+.sunshree-popup-option-whatsapp {
+  color: #176b4a;
+  font-size: 0.8rem;
+  font-weight: 700;
+  justify-self: center;
+  text-align: center;
+  text-decoration: none;
+}
+
+.sunshree-popup-whatsapp {
+  background: transparent;
+  color: #176b4a;
+  font-size: 0.85rem;
+  justify-self: center;
+  min-height: 40px;
+  padding: 0.5rem;
+  text-decoration: underline;
+}
+
+.sunshree-category-section {
+  gap: clamp(1rem, 3vw, 1.75rem);
+}
+
+.sunshree-short-stay-section {
+  border-color: #dfe4df;
+}
+
+.sunshree-booking-links a {
+  background: #202a30;
+  border-color: #202a30;
+  color: #fff;
+  font-size: 0.95rem;
+  min-width: 170px;
+}
+
+.sunshree-booking-links a:hover {
+  background: #35444b;
+}
+
+@media (max-width: 640px) {
+  .sunshree-popup-backdrop {
+    align-items: flex-start;
+    padding: 0.65rem;
+  }
+
+  .sunshree-popup-card {
+    margin: auto 0;
+    max-height: calc(100dvh - 1.3rem);
+  }
+
+  .sunshree-popup-image,
+  .sunshree-popup-image-placeholder {
+    height: 150px;
+  }
+
+  .sunshree-popup-actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sunshree-popup-option {
+    gap: 0.5rem;
+    padding: 0.9rem;
+  }
+
+  .sunshree-popup-option p {
+    font-size: 0.9rem;
+  }
+
+  .sunshree-popup-option-whatsapp {
+    justify-self: start;
+  }
+
+  .sunshree-public-header {
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    padding: 0.75rem 3.5rem 0.75rem 0;
+  }
+
+  .sunshree-public-header .sunshree-brand {
+    margin-right: auto;
+  }
+
+  .sunshree-public-header .sunshree-existing-properties {
+    flex-basis: 100%;
+  }
+
+  .sunshree-page-close {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .sunshree-booking-links {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sunshree-booking-links a {
+    width: 100%;
+  }
+}
+
+.sunshree-residential-gallery {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+
+.sunshree-residential-gallery img {
+  aspect-ratio: 4 / 3;
+  min-height: 220px;
+}
+
+.sunshree-category-copy h1,
+.sunshree-category-copy h2 {
+  font-family: var(--font-display, Georgia, serif);
+  font-weight: 700;
+}
+
+.sunshree-residential-enquiry,
+.sunshree-residential-whatsapp,
+.sunshree-short-stay-whatsapp,
+.sunshree-booking-links a,
+.sunshree-popup-option a {
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.sunshree-residential-enquiry:hover,
+.sunshree-residential-whatsapp:hover,
+.sunshree-short-stay-whatsapp:hover,
+.sunshree-booking-links a:hover,
+.sunshree-popup-option a:hover {
+  transform: translateY(-1px);
+}
+
+.sunshree-popup-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.sunshree-popup-image-frame {
+  background: #1d2727;
+  grid-column: 1 / -1;
+  height: clamp(220px, 34vh, 300px);
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.sunshree-popup-image-frame::after {
+  background: linear-gradient(90deg, rgba(10, 14, 15, 0.28), rgba(10, 14, 15, 0.08) 50%, rgba(10, 14, 15, 0.28));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.sunshree-popup-image-background,
+.sunshree-popup-image,
+.sunshree-popup-image-placeholder {
+  display: block;
+  inset: 0;
+  min-height: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.sunshree-popup-image-background {
+  filter: blur(18px);
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.82;
+  transform: scale(1.08);
+}
+
+.sunshree-popup-image {
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  z-index: 1;
+}
+
+.sunshree-popup-image-placeholder {
+  align-items: center;
+  background-color: #1d2727;
+  color: #e4d4a9;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  justify-content: center;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+
+.sunshree-popup-image-placeholder .sunshree-popup-placeholder-mark {
+  position: static;
+}
+
+.sunshree-popup-image-placeholder small {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+}
+
+.sunshree-popup-content {
+  align-content: center;
+  min-width: 0;
+}
+
+.sunshree-popup-card {
+  max-height: min(94dvh, 900px);
+  overscroll-behavior: contain;
+}
+
+.sunshree-popup-close {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+.sunshree-assistant {
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  z-index: 1000;
+}
+
+.sunshree-assistant-trigger,
+.sunshree-assistant-submit,
+.sunshree-assistant-result a {
+  align-items: center;
+  background: #176b4a;
+  border: 1px solid #176b4a;
+  border-radius: 999px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.75rem 1.1rem;
+  text-decoration: none;
+}
+
+.sunshree-assistant-panel {
+  background: #fff;
+  border: 1px solid #e5e1d7;
+  border-radius: 14px;
+  bottom: calc(100% + 0.75rem);
+  box-shadow: 0 16px 48px rgba(20, 25, 30, 0.22);
+  max-height: min(680px, calc(100dvh - 110px));
+  overflow: auto;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  width: min(380px, calc(100vw - 2rem));
+}
+
+.sunshree-assistant-header {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.sunshree-assistant-header h2 {
+  color: #202326;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.sunshree-assistant-close {
+  align-items: center;
+  background: #f2f0eb;
+  border: 0;
+  border-radius: 50%;
+  color: #202326;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 38px;
+  font-size: 1.4rem;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.sunshree-assistant-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.sunshree-assistant-form label {
+  color: #34383c;
+  display: grid;
+  font-size: 0.88rem;
+  font-weight: 700;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.sunshree-assistant-form label span {
+  color: #777d82;
+  display: inline;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.sunshree-assistant-form input,
+.sunshree-assistant-form select,
+.sunshree-assistant-form textarea {
+  background: #fff;
+  border: 1px solid #cfd3d6;
+  border-radius: 7px;
+  box-sizing: border-box;
+  color: #202326;
+  font: inherit;
+  font-size: 16px;
+  min-height: 44px;
+  min-width: 0;
+  padding: 0.6rem 0.7rem;
+  width: 100%;
+}
+
+.sunshree-assistant-form textarea {
+  resize: vertical;
+}
+
+.sunshree-assistant-submit {
+  border-radius: 7px;
+  width: 100%;
+}
+
+.sunshree-assistant-disclaimer,
+.sunshree-assistant-result p {
+  color: #656a70;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.sunshree-assistant-error {
+  color: #a42e2e;
+  font-size: 0.84rem;
+  margin: 0;
+}
+
+.sunshree-assistant-result {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.sunshree-assistant-result a {
+  border-radius: 7px;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .sunshree-popup-backdrop {
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .sunshree-popup-card {
+    max-height: calc(100dvh - 1.3rem);
+    width: min(100%, 560px);
+  }
+
+  .sunshree-popup-layout {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .sunshree-popup-image-frame,
+  .sunshree-popup-image-placeholder {
+    height: clamp(125px, 22dvh, 175px);
+  }
+
+  .sunshree-popup-content {
+    gap: 0.6rem;
+    padding: 0.9rem;
+  }
+
+  .sunshree-popup-content h2 {
+    font-size: clamp(1.55rem, 7vw, 2rem);
+  }
+
+  .sunshree-popup-actions {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.55rem;
+  }
+
+  .sunshree-popup-option {
+    gap: 0.4rem;
+    padding: 0.7rem;
+  }
+
+  .sunshree-popup-option p {
+    font-size: 0.82rem;
+  }
+
+  .sunshree-popup-option .sunshree-book-button,
+  .sunshree-popup-option .sunshree-short-stay-button {
+    min-height: 44px;
+  }
+
+  .sunshree-popup-whatsapp {
+    min-height: 36px;
+  }
+
+  .sunshree-assistant {
+    bottom: max(0.65rem, env(safe-area-inset-bottom));
+    left: max(0.65rem, env(safe-area-inset-left));
+    right: max(0.65rem, env(safe-area-inset-right));
+  }
+
+  .sunshree-assistant-trigger {
+    margin-left: auto;
+    min-height: 48px;
+  }
+
+  .sunshree-assistant-panel {
+    bottom: calc(100% + 0.55rem);
+    left: 0;
+    max-height: calc(100dvh - 100px);
+    padding: 0.9rem;
+    right: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 599px) {
+  .sunshree-popup-image-frame {
+    aspect-ratio: 3 / 4;
+    background: #e8e5de;
+    height: auto;
+  }
+
+  .sunshree-popup-image-frame::after,
+  .sunshree-popup-image-background {
+    display: none;
+  }
+
+  .sunshree-popup-image-frame .sunshree-popup-image {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
+}

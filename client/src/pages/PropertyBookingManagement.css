@@ -1,0 +1,230 @@
+.pbm {
+  --pbm-ink: #17191c;
+  --pbm-muted: #72777f;
+  --pbm-border: #e6e8eb;
+  --pbm-surface: #fff;
+  --pbm-accent: var(--zentrax-gold, #c9a84c);
+  color: var(--pbm-ink);
+  display: grid;
+  gap: 1.25rem;
+  padding-bottom: 2rem;
+}
+
+.pbm-header h1,
+.pbm-header p:last-child {
+  margin: 0;
+}
+
+.pbm-header p:last-child {
+  color: var(--pbm-muted);
+  margin-top: 0.4rem;
+}
+
+.pbm-eyebrow {
+  color: var(--pbm-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin: 0 0 0.35rem;
+}
+
+.pbm-card {
+  background: var(--pbm-surface);
+  border: 1px solid var(--pbm-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(20, 25, 30, 0.035);
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.pbm-form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.sunshree-admin-section {
+  border-bottom: 1px solid var(--pbm-border);
+  display: grid;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.sunshree-admin-section h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.pbm-muted {
+  color: var(--pbm-muted);
+  margin: 0;
+}
+
+.sunshree-form-grid {
+  display: grid;
+  gap: 0.9rem 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sunshree-form-grid label,
+.sunshree-link-editor label {
+  color: #555b62;
+  display: grid;
+  font-size: 0.9rem;
+  font-weight: 600;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.sunshree-form-grid input:not([type="checkbox"]),
+.sunshree-form-grid select,
+.sunshree-form-grid textarea,
+.sunshree-link-editor input {
+  background: #fff;
+  border: 1px solid #d5d9de;
+  border-radius: 7px;
+  color: var(--pbm-ink);
+  font: inherit;
+  min-height: 42px;
+  padding: 0.6rem 0.7rem;
+  width: 100%;
+}
+
+.sunshree-form-grid textarea {
+  resize: vertical;
+}
+
+.sunshree-span-all {
+  grid-column: 1 / -1;
+}
+
+.pbm-checkbox {
+  align-items: center;
+  display: flex !important;
+  gap: 0.55rem !important;
+}
+
+.pbm-checkbox input {
+  accent-color: var(--pbm-accent);
+  height: 1rem;
+  width: 1rem;
+}
+
+.sunshree-admin-image {
+  border: 1px solid var(--pbm-border);
+  border-radius: 8px;
+  max-height: 250px;
+  max-width: 100%;
+  object-fit: cover;
+  width: min(100%, 480px);
+}
+
+.sunshree-admin-gallery {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  margin: 1rem 0;
+}
+
+.sunshree-admin-gallery figure {
+  margin: 0;
+}
+
+.sunshree-admin-gallery .sunshree-admin-image {
+  height: 130px;
+  margin: 0 0 0.4rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+.sunshree-link-editor {
+  align-items: end;
+  background: #faf9f6;
+  border: 1px solid var(--pbm-border);
+  border-radius: 9px;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: minmax(130px, 0.7fr) minmax(220px, 1.5fr) auto auto;
+  padding: 0.85rem;
+}
+
+.sunshree-form-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.pbm-button {
+  align-items: center;
+  background: #c9a84c;
+  border: 1px solid #c9a84c;
+  border-radius: 7px;
+  color: #17191c;
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.6rem 0.9rem;
+  text-decoration: none;
+}
+
+.pbm-button:hover {
+  background: #e2c47a;
+}
+
+.pbm-button-muted {
+  background: #fff;
+  border-color: #d5d9de;
+  color: #33383d;
+}
+
+.pbm-button-danger {
+  background: #fff;
+  border-color: #bd4444;
+  color: #a42e2e;
+}
+
+.sunshree-preview-overlay {
+  background: rgba(15, 17, 18, 0.75);
+  inset: 0;
+  overflow: auto;
+  padding: 2rem 1rem;
+  position: fixed;
+  z-index: 3000;
+}
+
+.sunshree-preview-overlay > .sunshree-public-page {
+  margin: 2rem auto;
+  max-width: 1100px;
+}
+
+.sunshree-preview-close {
+  background: #fff;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.6rem;
+  height: 42px;
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  width: 42px;
+  z-index: 3001;
+}
+
+@media (max-width: 760px) {
+  .sunshree-form-grid,
+  .sunshree-link-editor {
+    grid-template-columns: 1fr;
+  }
+
+  .sunshree-span-all {
+    grid-column: auto;
+  }
+
+  .sunshree-form-actions > * {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}

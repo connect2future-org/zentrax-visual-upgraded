@@ -121,7 +121,7 @@ function PropertiesSection() {
                 <div className="prop-divider"></div>
                 <p className="prop-description">{property.description || "Property details managed by the admin."}</p>
                 <div className="prop-ctas">
-                  <a href={`tel:${property.contactNumber || "7019436720"}`} className="btn-gold">Enquire Now</a>
+                  <a href="#contact" className="btn-gold">Enquire Now</a>
                   <a href={buildWhatsAppUrl(property.whatsappNumber, property.name, property.contactNumber)} className="btn-outline-dark" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
                 </div>
               </div>

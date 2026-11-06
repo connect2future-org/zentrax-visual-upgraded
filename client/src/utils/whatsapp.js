@@ -20,5 +20,5 @@ export const buildWhatsAppUrl = (number, propertyName = "", fallbackNumber = "")
   if (!cleaned) return "";
 
   const message = `Hi, I am interested in the property \"${propertyName}\". Please share more details.`;
-  return `https://wa.me/${cleaned}?text=${encodeURIComponent(message)}`;
+  return `https://web.whatsapp.com/send?phone=${cleaned}&text=${encodeURIComponent(message)}`;
 };

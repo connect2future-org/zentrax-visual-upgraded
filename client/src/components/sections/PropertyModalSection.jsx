@@ -47,7 +47,7 @@ function PropertyModalSection() {
               Enquire Now
             </a>
             <a
-              href="https://wa.me/917019436720"
+              href="https://web.whatsapp.com/send?phone=917019436720"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline-dark modal-wa-btn"

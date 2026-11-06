@@ -5,12 +5,14 @@ import api from "../utils/api";
 import ConfirmModal from "../components/ui/ConfirmModal";
 import { useToast } from "../components/ui/ToastContext";
 import AdminPropertyGalleryModal from "../components/sections/AdminPropertyGalleryModal";
+import PropertyBookingManagement from "./PropertyBookingManagement";
 
 const NAV = [
   { to: "/admin", label: "Overview", icon: "◈", end: true },
   { to: "/admin/managers", label: "Managers", icon: "◎" },
   { to: "/admin/clients", label: "Clients", icon: "◇" },
   { to: "/admin/properties", label: "Properties", icon: "⬡" },
+  { to: "/admin/property-booking", label: "SunShree Booking Settings", icon: "⌂" },
 ];
 
 function Overview() {
@@ -440,6 +442,7 @@ export default function AdminDashboard() {
         <Route path="managers" element={<UserManager apiPath="managers" roleLabel="Manager" />} />
         <Route path="clients" element={<UserManager apiPath="clients" roleLabel="Client" />} />
         <Route path="properties" element={<Properties />} />
+        <Route path="property-booking/*" element={<PropertyBookingManagement />} />
         <Route path="*" element={<Navigate to="/admin" replace />} />
       </Routes>
     </DashboardLayout>
